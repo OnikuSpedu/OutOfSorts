@@ -1,4 +1,4 @@
-public class DebugPrint{
+public class DPrint{
     public static boolean DEBUG = true;
   
     public static void dprint(String s){
