@@ -1,8 +1,16 @@
 import java.util.Arrays;
+import java.util.Random;
 
 public class Tester {
     public static void main(String[] args) {
 
+        handmadeTests();
+
+        randomTests();
+
+    }
+
+    public static void handmadeTests() {
         int[][] HandmadeTests = {
             {},
             {0},
@@ -18,6 +26,52 @@ public class Tester {
             System.out.println("After:" + Arrays.toString(test));
         }
         System.out.println();
+    }
 
+    public static void randomTests() {
+        int seed = 324090;
+
+        int[][] testCases = new int[1000][];
+
+        int pointer = 0;
+
+        Random rng = new Random(seed);
+        boolean failure = false;
+
+        for (int i = 0; i < testCases.length; i++) {
+            int[] tempArr = new int[(int)(Math.random() * ((20) + 1))];
+            for (int j = 0; j < tempArr.length; j++) {
+                tempArr[j] = rng.nextInt() % 1000;
+                pointer++;
+            }
+            
+            testCases[i] = tempArr;
+            System.out.println("Before:" + Arrays.toString(tempArr));
+            Sorts.bubbleSort(tempArr);
+            System.out.println("After:" + Arrays.toString(tempArr));
+            if (isSorted(tempArr)) {
+                System.out.println("Test Case " + (i + 1) + ": Success");
+            }
+            else {
+                System.out.println("Test Case " + (i + 1) + ": Fail");
+                failure = true;
+            }
+            
+            System.out.println();
+        }
+
+        System.out.println(pointer + " Integers Used. Generated Using Seed: " + seed +".");
+        if (failure) {
+            System.out.println("At least one test case failed.");
+        } else {
+            System.out.println("\nS      u     c    c   e  s s.");
+        }
+    }
+    public static boolean isSorted(int[] array) {
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i] > array[i + 1])
+                return false;
+        }
+        return true;
     }
 }
