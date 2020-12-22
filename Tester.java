@@ -4,13 +4,17 @@ import java.util.Random;
 public class Tester {
     public static void main(String[] args) {
 
-        handmadeTests();
+        handmadeTests("bubbleSort");
+        randomTests("bubbleSort");
 
-        randomTests();
+        handmadeTests("selectionSort");
+        randomTests("selectionSort");
 
     }
 
-    public static void handmadeTests() {
+    public static void handmadeTests(String sortType) {
+        System.out.println();
+        System.out.println("--------- Handmade Curated " + sortType + " Tests ---------" );
         int[][] HandmadeTests = {
             {},
             {0},
@@ -22,14 +26,22 @@ public class Tester {
         for (int i = 0; i < HandmadeTests.length; i++) {
             int[] test = HandmadeTests[i];
             System.out.println("Before:" + Arrays.toString(test));
-            Sorts.bubbleSort(test);
+            if (sortType.equals("bubbleSort")) {
+                Sorts.bubbleSort(test);
+            }
+            else if (sortType.equals("selectionSort")) {
+                Sorts.selectionSort(test);
+            }
             System.out.println("After:" + Arrays.toString(test));
         }
         System.out.println();
     }
 
-    public static void randomTests() {
+    public static void randomTests(String sortType) {
+        System.out.println();
+        System.out.println("--------- Random Generated Integer Arrays " + sortType + " Tests ---------" );
         int seed = 324090;
+        System.out.println("Seed: " + seed);
 
         int[][] testCases = new int[1000][];
 
@@ -47,7 +59,12 @@ public class Tester {
             
             testCases[i] = tempArr;
             System.out.println("Before:" + Arrays.toString(tempArr));
-            Sorts.bubbleSort(tempArr);
+            if (sortType.equals("bubbleSort")) {
+                Sorts.bubbleSort(tempArr);
+            }
+            else if (sortType.equals("selectionSort")) {
+                Sorts.selectionSort(tempArr);
+            }
             System.out.println("After:" + Arrays.toString(tempArr));
             if (isSorted(tempArr)) {
                 System.out.println("Test Case " + (i + 1) + ": Success");

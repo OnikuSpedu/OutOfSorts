@@ -20,17 +20,32 @@ public class Sorts{
         }
     }
     public static void selectionSort(int[] data){
-        for (int i = 0; i < data.length; i++) {
-            int minIndex = i;
-            for (int j = i + 1; i < data.length; i++) {
-                if (data[j] < data[minIndex]) {
-                    minIndex = j;
+        if (data.length > 1) {
+            for (int i = 0; i < data.length; i++) {
+                int minIndex = i;
+                for (int j = i + 1; j < data.length; j++) {
+                    if (data[j] < data[minIndex]) {
+                        minIndex = j;
+                    }
+                }
+                if (minIndex != i) {
+                    int temp = data[i];
+                    data[i] = data[minIndex];
+                    data[minIndex] = temp;
                 }
             }
-            if (minIndex != i) {
-                int temp = data[i];
-                data[i] = data[minIndex];
-                data[minIndex] = temp;
+        }
+    }
+    public static void insertionSort(int[] data){
+        if (data.length > 1) {
+            for (int i = 1; i < data.length; i++) {
+                int value = data[i];
+                int j = i - 1;
+                while (j >= 0 && data[j] > value) {
+                    data[j+1] = data[j]; 
+                    j--;
+                }
+                data[j + 1] = value;
             }
         }
     }
