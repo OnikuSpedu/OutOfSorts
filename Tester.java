@@ -10,6 +10,9 @@ public class Tester {
         handmadeTests("selectionSort");
         randomTests("selectionSort");
 
+        handmadeTests("insertionSort");
+        randomTests("insertionSort");
+
     }
 
     public static void handmadeTests(String sortType) {
@@ -31,6 +34,9 @@ public class Tester {
             }
             else if (sortType.equals("selectionSort")) {
                 Sorts.selectionSort(test);
+            }
+            else if (sortType.equals("insertionSort")) {
+                Sorts.insertionSort(test);
             }
             System.out.println("After:" + Arrays.toString(test));
         }
@@ -64,6 +70,9 @@ public class Tester {
             }
             else if (sortType.equals("selectionSort")) {
                 Sorts.selectionSort(tempArr);
+            }
+            else if (sortType.equals("insertionSort")) {
+                Sorts.insertionSort(tempArr);
             }
             System.out.println("After:" + Arrays.toString(tempArr));
             if (isSorted(tempArr)) {
