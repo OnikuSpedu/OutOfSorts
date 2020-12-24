@@ -7,15 +7,15 @@ public class Sorts{
         boolean sorted = false;
         if (data.length > 1) {
             while (!sorted) {
-            sorted = true;
-            for (int i = 0; i < data.length - 1; i++) {
-                if (data[i] > data[i+1]) {
-                    sorted = false;
-                    int temp = data[i];
-                    data[i] = data[i+1];
-                    data[i+1] = temp;
+                sorted = true;
+                for (int i = 0; i < data.length - 1; i++) {
+                    if (data[i] > data[i+1]) {
+                        sorted = false;
+                        int temp = data[i];
+                        data[i] = data[i+1];
+                        data[i+1] = temp;
+                    }
                 }
-            }
             }
         }
     }
